@@ -57,6 +57,7 @@
 
 # Office Router Configuration
 # OSPF Configuration
+## Office 1 Router
 - On Office 1 Router: < br/>
 `enable` < br/>
 `conf t` < br/>
@@ -75,4 +76,48 @@
 `router-id 2.2.2.2`
 	- We get a message saying `Reload or use "clear ip ospf process" command, for this to take effect`
 	- Let's exit to the user exec terminal, do a `copy running-config startup-config` and then `reload`
+## Office 2 Router
+- In IOS:
+`enable`
+`configure terminal`
+`interface gigabitEthernet 0/0`
+`ip address 10.1.23.3 255.255.255.0`
+`exit`
+`interface gigabitEthernet0/1`
+`ip address 10.1.13.3 255.255.255.0`
+`exit`
+`interface loopback 0` (We do this to set the Router ID)
+`ip address 3.3.3.3 255.255.255.0`
+`exit`
+`router ospf 1`
+`network 10.0.0.0 0.255.255.255 area 23`
+`exit`
+`exit`
+`copy running-config startup-config`
+- After saving, once again enable both gigabit ethernet interfaces in the config GUI
+
+## Office 3 Router
+`enable`
+`conf t`
+`interface gigabitEthernet0/0` (internal interface)
+`ip address 10.1.4.4 255.255.255.0`
+`exit`
+`interface gigabitEthernet 0/1`
+`ip address 10.1.14.4 255.255.255.0`
+`exit`
+- Now enable the interfaces in the GUI like before
+- Next, we set up ospf on this router, back in IOS again
+`exit`
+`router ospf 1`
+`network 10.0.0.0 0.255.255.255 area 4`
+`passive-interface gigabitEthernet0/0` (internal interface)
+`exit`
+`exit`
+`copy running-config startup-config`
+
+## ISP Router 1
+- In the GUI, let's first make sure all the gigabitEthernet interfaces are on
+- Now in IOS:
+`enable`
+`config t`
 
