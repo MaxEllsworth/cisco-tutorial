@@ -56,3 +56,23 @@
 - Before we can worry about VLAN configurations, which is something we'll accomplish on the switches, we must first set up the intermediary routers.
 
 # Office Router Configuration
+# OSPF Configuration
+- On Office 1 Router: < br/>
+`enable` < br/>
+`conf t` < br/>
+`interface gigabitEthernet 0/1` (interface in non-backbone area) < br/> 
+`ip address 10.1.23.2 255.255.255.0` < br/>
+`exit`
+`interface gigabitEthernet 0/0` (interface in backbone area)
+`ip address 10.1.12.2 255.255.255.0`
+`exit`
+`router ospf 1`
+	- We now get the following error: `OSPF process 1 cannot start. There must be at least one "up" IP interface`
+	- We can fix this by going into the config GUI panel and toggling on our interfaces
+`exit`
+`router ospf 1`
+`network 10.0.0.0 0.255.255.255 area 23`
+`router-id 2.2.2.2`
+	- We get a message saying `Reload or use "clear ip ospf process" command, for this to take effect`
+	- Let's exit to the user exec terminal, do a `copy running-config startup-config` and then `reload`
+
