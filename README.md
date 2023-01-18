@@ -24,16 +24,16 @@
 - Manually turn on interface (under config tab) 
 
 ## Checking Our Work
-- On ISP Router 1 in IOS: < br />
-`show running-config`
-`show ip eigrp neighbors`
+- On ISP Router 1 in IOS: <br />
+`show running-config` <br />
+`show ip eigrp neighbors` <br />
 - On ISP Router 2 IOS:
-`show ip eigrp neighbors`
+`show ip eigrp neighbors` <br />
 
 ## Saving Our Work
-- On both routers: < br />
-`enable` < br />
-`copy running-config startup-config` < br />
+- On both routers: <br />
+`enable` <br />
+`copy running-config startup-config` <br />
 
 
 # Setting Up Server 2
