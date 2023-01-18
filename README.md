@@ -35,7 +35,7 @@
 `enable` <br />
 `copy running-config startup-config` <br />
 
-
+<!--
 # Setting Up Server 2
 - On Website 2 Router in IOS: <br />
 `enable` <br />
@@ -52,11 +52,11 @@
 # What's Next?
 - At this point we might be tempted to set up a desktop | laptop | workstation ASAP so we can test connection to the website 
 	- This can be accomplished using the same commands and approach we've used thus far. Meaning it's not a difficult-enough of a task for the purpose of this exercise. We will therefore hold off on this step! 
+-->
 <!---
 - The next step will be to set up a VLAN between offices 1 and 3. The decision for this is not completely arbitrary. Notice how these two offices have similar types of computers on their network: desktops, workstations, and laptops. For the purposes of our scenario, let these be geographically separated offices which need to act as one network!
 - Before we can worry about VLAN configurations, which is something we'll accomplish on the switches, we must first set up the intermediary routers.
 -->
-# Office Router Configuration
 # OSPF Example
 ## Office 1 Router
 - On Office 1 Router: <br />
