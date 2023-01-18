@@ -1,4 +1,4 @@
-# EIGRP
+# EIGRP Example
 ## ISP Router 1
 - In Cisco IOS: <br />
 `enable` <br />
@@ -57,7 +57,7 @@
 - Before we can worry about VLAN configurations, which is something we'll accomplish on the switches, we must first set up the intermediary routers.
 -->
 # Office Router Configuration
-# OSPF Configuration
+# OSPF Example
 ## Office 1 Router
 - On Office 1 Router: <br />
 `enable` <br />
