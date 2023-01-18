@@ -170,3 +170,4 @@
 `exit`<br />
 `copy running-config startup-config` <br />
 `reload` <br />
+## Checking Our Work
