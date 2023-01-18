@@ -171,3 +171,16 @@
 `copy running-config startup-config` <br />
 `reload` <br />
 ## Checking Our Work
+# BGP Example
+## ISP Router 2
+`enable` <br />
+`conf t` <br />
+`interface gigabitEthernet 0/1` <br />
+`ip address 140.1.1.1 255.255.255.0` <br />
+`no shut` <br />
+`exit` <br />
+`interface gigabitEthernet 0/2` <br />
+`ip address 160.1.1.1 255.255.255.0` <br />
+`no shut` <br />
+`exit` <br />
+
