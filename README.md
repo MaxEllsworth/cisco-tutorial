@@ -183,4 +183,33 @@
 `ip address 160.1.1.1 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
+`router bgp 100` <br />
+`network 140.1.1.0 mask 255.255.255.0` <br />
+`network 160.1.1.0 mask 255.255.255.0` <br />
+`exit` <br />
+`exit` <br />
+`copy running-config startup-config` <br />
 
+## Website 1 Router
+`enable`<br />
+`conf t` <br />
+`interface gigabitEthernet0/1` <br />
+`ip address 140.1.1.2 255.255.255.0` <br />
+`no shut`
+`exit`
+`interface gigabitEthernet0/1` <br />
+`ip address 140.1.10.2 255.255.255.0` <br />
+`no shut` <br />
+`exit` <br />
+`exit` <br />
+`copy running-config startup-config` <br />
+
+## Website 2 Router
+`enable` <br />
+`conf t` <br />
+`interface gigabitEthernet0/1` <br />
+`ip address 160.1.1.2 255.255.255.0` <br />
+`ip address 160.1.10.2 255.255.255.0` <br />
+`exit` <br />
+`exit` <br />
+`copy running-config startup-config` <br />
