@@ -100,6 +100,7 @@
 
 ## Office 3 Router
 - Install an HWIC-2T serial module before proceeding <br />
+
 `enable` <br />
 `conf t` <br />
 `interface gigabitEthernet0/0` (internal) <br />
