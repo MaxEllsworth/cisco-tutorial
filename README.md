@@ -95,7 +95,7 @@
 `exit` <br />
 `exit` <br />
 `clear ip ospf process` <br />
-        - Type `yes`
+        - Type `yes` <br />
 `copy running-config startup-config` <br />
 
 ## Office 3 Router
