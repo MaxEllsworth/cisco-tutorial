@@ -1,40 +1,32 @@
 ![Network Diagram](network_diagram.jpg)
 # EIGRP Example
 ## ISP Router 1
-- In Cisco IOS: <br />
 `enable` <br />
 `conf t` <br />
 `router eigrp 100` <br />
 `network  150.1.1.0 0.0.0.255` <br />
-- Now exit the EIGRP config in order to set up the interface, also in IOS
+`exit` <br />
 `interface gigabitEthernet0/0` <br />
 `ip address 150.1.1.50 255.255.255.0` <br />
-- Manually turn on interface under the "config" tab
-
+`no shut` <br />
+`exit` <br />
+`exit` <br />
+`copy running-config startup-config` <br />
 ## ISP Router 2
-- In Cisco IOS: <br />
 `enable` <br /> 
 `conf t` <br />
 `router eigrp 100` <br />
 `network 150.1.1.0 0.0.0.255` <br />
-	 - If you mess up this step, just run the same command but with `no` at the beginning
-
-- Same as before, we now need to exit the eigrp config in order to assign an IP address to the physical port, also in IOS: <br />
 `interface gigabitEthernet0/0` <br />
 `ip address 150.1.1.100 255.255.255.0` <br />
-- Manually turn on interface (under config tab) 
+`no shut` <br />
+`exit` <br />
+`exit` <br />
+`copy running-config startup-config` <br />
 
 ## Checking Our Work
-- On ISP Router 1 in IOS: <br />
 `show running-config` <br />
 `show ip eigrp neighbors` <br />
-- On ISP Router 2 IOS:
-`show ip eigrp neighbors` <br />
-
-## Saving Our Work
-- On both routers: <br />
-`enable` <br />
-`copy running-config startup-config` <br />
 
 <!---
 # Setting Up Server 2
