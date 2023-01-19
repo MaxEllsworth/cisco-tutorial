@@ -7,7 +7,7 @@
 `router eigrp 100` <br />
 `network  150.1.1.0 0.0.0.255` <br />
 - Now exit the EIGRP config in order to set up the interface, also in IOS
-`interface gigabitEthernet0/2` <br />
+`interface gigabitEthernet0/0` <br />
 `ip address 150.1.1.50 255.255.255.0` <br />
 - Manually turn on interface under the "config" tab
 
@@ -224,3 +224,4 @@
 ## Checking Our Work
 - On both routers, in exec mode, run:
 `show ip bgp neighbors` <br />
+
