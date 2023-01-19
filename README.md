@@ -1,3 +1,4 @@
+![Network Diagram](network_diagram.jpg)
 # EIGRP Example
 ## ISP Router 1
 - In Cisco IOS: <br />
