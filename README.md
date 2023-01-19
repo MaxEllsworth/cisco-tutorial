@@ -100,7 +100,6 @@
 
 ## Office 3 Router
  - Install an HWIC-2T serial module before proceeding <br />
-
 `enable` <br />
 `conf t` <br />
 `interface gigabitEthernet0/0` (internal) <br />
@@ -178,6 +177,7 @@
 `copy running-config startup-config` <br />
 `reload` <br />
 ## Checking Our Work
+ - On ISP Router 1, run: <br />
 `show ip ospf neighbor` <br />
 # BGP Example
 ## ISP Router 2
@@ -229,6 +229,6 @@
 `exit` <br />
 `copy running-config startup-config` <br /> -->
 ## Checking Our Work
-- On both routers, in exec mode, run:
+ - On both routers, in exec mode, run:
 `show ip bgp neighbors` <br />
 
