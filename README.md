@@ -70,7 +70,7 @@
 `exit` <br />
 `exit` <br />
 `clear ip ospf process` <br />
-	- Type `yes`
+	- Type `yes` <br />
 `copy running-config startup-config` <br />
 
 ## Office 2 Router
@@ -91,7 +91,7 @@
 `router ospf 1` <br />
 `network 10.1.13.3 0.0.0.255 area 23` <br />
 `passive-interface gigabitEthernet0/0` (internal) <br />
-`router-id 10.1.13.3 0.0.0.255` <br />
+`router-id 10.1.13.3` <br />
 `exit` <br />
 `exit` <br />
 `clear ip ospf process` <br />
