@@ -17,6 +17,7 @@
 `conf t` <br />
 `router eigrp 100` <br />
 `network 150.1.1.0 0.0.0.255` <br />
+`exit` <br />
 `interface gigabitEthernet0/0` <br />
 `ip address 150.1.1.100 255.255.255.0` <br />
 `no shut` <br />
