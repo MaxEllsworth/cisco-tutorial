@@ -183,7 +183,7 @@
 ## ISP Router 2
 `enable` <br />
 `conf t` <br />
-`interface gigabitEthernet 0/1` <br />
+`interface gigabitEthernet 0/2` (Link to Website 1 Router)<br />
 `ip address 140.1.1.1 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
