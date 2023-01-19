@@ -104,20 +104,24 @@
 `conf t` <br />
 `interface gigabitEthernet0/0` (internal) <br />
 `ip address 10.1.4.4 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
 `interface serial 0/3/0` <br />
 `ip address 10.1.14.4 255.255.255.0` (external) <br />
+`no shut` <br /> 
 `exit` <br />
 `router ospf 1` <br />
 `network 10.1.14.0 0.0.0.255 area 4` <br />
-`passive-interface gigabitEthernet0/0` (internal interface) <br />
+`passive-interface gigabitEthernet0/0` (internal) <br />
 `router-id 10.1.4.4` <br />
 `exit` <br />
 `exit` <br />
+`clear ip ospf process` <br />
+        - Type `yes` <br />
 `copy running-config startup-config` <br />
 
 ## ISP Router 1
-- Install an HWIC-2T serial module before proceeding <br />
+ - Install an HWIC-2T serial module before proceeding <br />
 `enable` <br />
 `config t` <br />
 `interface gigabitEthernet0/1` (area 23 network) <br />
@@ -156,6 +160,7 @@
 - Now let's give the serial interface an address -->
 `interface serial 0/3/0` <br />
 `ip address 10.1.14.1 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
 `router ospf 1` <br />
 `network 150.1.1.50 0.0.0.0 area 0` (backbone) <br />
@@ -166,6 +171,8 @@
 `passive-interface gigabitEthernet0/2` <br />
 `exit` <br />
 `exit`<br />
+`clear ip ospf process` <br />
+        - Type `yes` <br />
 `copy running-config startup-config` <br />
 `reload` <br />
 ## Checking Our Work
