@@ -6,7 +6,7 @@
 `router eigrp 100` <br />
 `network  150.1.1.0 0.0.0.255` <br />
 `exit` <br />
-`interface gigabitEthernet0/0` <br />
+`interface gigabitEthernet0/2` <br />
 `ip address 150.1.1.50 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
@@ -53,7 +53,6 @@
 -->
 # OSPF Example
 ## Office 1 Router
-- On Office 1 Router: <br />
 `enable` <br />
 `conf t` <br />
 `interface gigabitEthernet 0/1` (interface in non-backbone area) <br /> 
@@ -72,24 +71,25 @@
 	- We get a message saying `Reload or use "clear ip ospf process" command, for this to take effect`
 	- Let's exit to the user exec terminal, do a `copy running-config startup-config` and then `reload`
 ## Office 2 Router
-- In IOS:
 `enable` <br />
 `configure terminal` <br />
 `interface gigabitEthernet 0/0` <br />
 `ip address 10.1.23.3 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
 `interface gigabitEthernet0/1` <br />
 `ip address 10.1.13.3 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
 `interface loopback 0` (We do this to set the Router ID)<br />
 `ip address 3.3.3.3 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
-`router ospf 1` <br />
+`router ospf 3.3.3.3` <br />
 `network 10.0.0.0 0.255.255.255 area 23` <br />
 `exit` <br />
 `exit` <br />
 `copy running-config startup-config` <br />
-- After saving, once again enable both gigabit ethernet interfaces in the config GUI <br />
 
 ## Office 3 Router
 `enable` <br />
@@ -99,9 +99,6 @@
 `exit` <br />
 `interface gigabitEthernet 0/1` <br />
 `ip address 10.1.14.4 255.255.255.0` <br />
-`exit` <br />
-- Now enable the interfaces in the GUI like before 
-- Next, we set up ospf on this router, back in IOS again
 `exit` <br />
 `router ospf 1` <br />
 `network 10.0.0.0 0.255.255.255 area 4` <br />
