@@ -157,7 +157,7 @@
 `ip address 10.1.14.1 255.255.255.0` <br />
 `exit` <br />
 `router ospf 1` <br />
-`network 150.1.1.	50 0.0.0.0 area 0` (backbone) <br />
+`network 150.1.1.50 0.0.0.0 area 0` (backbone) <br />
 `network 10.1.12.1 0.0.0.0 area 23` <br />
 `network 10.1.13.1 0.0.0.0 area 23` <br />
 `network 10.1.14.1 0.0.0.0 area 4` <br />
@@ -167,7 +167,7 @@
 `exit`<br />
 `copy running-config startup-config` <br />
 `reload` <br />
-## cHECking Our Work
+## Checking Our Work
 # BGP Example
 ## ISP Router 2
 `enable` <br />
