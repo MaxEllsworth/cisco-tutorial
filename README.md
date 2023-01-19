@@ -205,11 +205,11 @@
 ## Website 1 Router
 `enable`<br />
 `conf t` <br />
-`interface gigabitEthernet0/1` <br />
+`interface gigabitEthernet0/1` (external) <br />
 `ip address 140.1.1.2 255.255.255.0` <br />
-`no shut`
-`exit`
-`interface gigabitEthernet0/1` <br />
+`no shut` <br />
+`exit` <br />
+`interface gigabitEthernet0/0`(internal) <br />
 `ip address 140.1.10.2 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
