@@ -122,7 +122,6 @@
 
 ## ISP Router 1
  - Install an HWIC-2T serial module before proceeding <br />
-
 `enable` <br />
 `config t` <br />
 `interface gigabitEthernet0/1` (area 23 network) <br />
