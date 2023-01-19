@@ -55,70 +55,79 @@
 ## Office 1 Router
 `enable` <br />
 `conf t` <br />
-`interface gigabitEthernet 0/1` (interface in non-backbone area) <br /> 
+`interface gigabitEthernet 0/1` (internal) <br /> 
 `ip address 10.1.23.2 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
-`interface gigabitEthernet 0/0` (interface in backbone area) <br />
+`interface gigabitEthernet 0/0` (external) <br />
 `ip address 10.1.12.2 255.255.255.0` <br />
-`exit` <br />
-`router ospf 1`<br />
-	- We now get the following error: `OSPF process 1 cannot start. There must be at least one "up" IP interface`
-	- We can fix this by going into the config GUI panel and toggling on our interfaces
+`no shut` <br />
 `exit` <br />
 `router ospf 1` <br />
-`network 10.0.0.0 0.255.255.255 area 23` <br />
-`router-id 2.2.2.2` <br />
-	- We get a message saying `Reload or use "clear ip ospf process" command, for this to take effect`
-	- Let's exit to the user exec terminal, do a `copy running-config startup-config` and then `reload`
+`network 10.1.12.2 0.0.0.255 area 23` <br />
+`passive-interface gigabitEthernet0/1` (internal) <br />
+`router-id 10.1.12.2` <br />
+`exit` <br />
+`exit` <br />
+`clear ip ospf process` <br />
+	- Type `yes`
+`copy running-config startup-config` <br />
+
 ## Office 2 Router
 `enable` <br />
 `configure terminal` <br />
-`interface gigabitEthernet 0/0` <br />
+`interface gigabitEthernet 0/0` (internal) <br />
 `ip address 10.1.23.3 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
-`interface gigabitEthernet0/1` <br />
+`interface gigabitEthernet0/1` (external) <br />
 `ip address 10.1.13.3 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
-`interface loopback 0` (We do this to set the Router ID)<br />
+<!-- `interface loopback 0` (We do this to set the Router ID)<br />
 `ip address 3.3.3.3 255.255.255.0` <br />
 `no shut` <br />
+`exit` <br /> -->
+`router ospf 1` <br />
+`network 10.1.13.3 0.0.0.255 area 23` <br />
+`passive-interface gigabitEthernet0/0` (internal) <br />
+`router-id 10.1.13.3 0.0.0.255` <br />
 `exit` <br />
-`router ospf 3.3.3.3` <br />
-`network 10.0.0.0 0.255.255.255 area 23` <br />
 `exit` <br />
-`exit` <br />
+`clear ip ospf process` <br />
+        - Type `yes`
 `copy running-config startup-config` <br />
 
 ## Office 3 Router
+- Install an HWIC-2T serial module before proceeding
 `enable` <br />
 `conf t` <br />
-`interface gigabitEthernet0/0` (internal interface) <br />
+`interface gigabitEthernet0/0` (internal) <br />
 `ip address 10.1.4.4 255.255.255.0` <br />
 `exit` <br />
-`interface gigabitEthernet 0/1` <br />
-`ip address 10.1.14.4 255.255.255.0` <br />
+`interface serial 0/3/0` <br />
+`ip address 10.1.14.4 255.255.255.0` (external) <br />
 `exit` <br />
 `router ospf 1` <br />
-`network 10.0.0.0 0.255.255.255 area 4` <br />
+`network 10.1.14.0 0.0.0.255 area 4` <br />
 `passive-interface gigabitEthernet0/0` (internal interface) <br />
+`router-id 10.1.4.4` <br />
 `exit` <br />
 `exit` <br />
 `copy running-config startup-config` <br />
 
 ## ISP Router 1
-- In the GUI, let's first make sure all the gigabitEthernet interfaces are on
-- Now in IOS, we will assign IP addresses to the interfaces:
 `enable` <br />
 `config t` <br />
 `interface gigabitEthernet0/1` (area 23 network) <br />
 `ip address 10.1.12.1 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
 `interface gigabitEthernet0/0` (area 23 network) <br />
 `ip address 10.1.13.1 255.255.255.0` <br />
+`no shut` <br />
 `exit` <br />
-`interface fastEthernet0/3/0` <br />
+<!--`interface fastEthernet0/3/0` <br />
 `ip address 10.1.14.1 255.255.255.0` <br />
 	- But wait, we have an error! We can't run the ip command!
 	- Turns out it's a switchport. Long story short, it's a port on a router that is acting like a port on a switch. We can't assign an IP to it so let's remove the cable, power off the device, and install a gigabit port to use instead. - Press delete and select the cable connecting ISP router 1 with Office 3 Router
@@ -143,19 +152,16 @@
 `copy running-config startup-config` <br />
 - Now we finally get to go back to ISP Router 1
 - Reconnect the ISP Router 1 and the Office 3 Router
-- Now let's give the serial interface an address
-`enable` <br />
-`conf t` <br />
-`interface serial 0/0/0` <br />
+- Now let's give the serial interface an address -->
+`interface serial 0/3/0` <br />
 `ip address 10.1.14.1 255.255.255.0` <br />
 `exit` <br />
-- Assigning networks to OSPF areas
 `router ospf 1` <br />
-`network 150.1.1.50 0.0.0.0 area 0` (Our backbone interface) <br />
+`network 150.1.1.	50 0.0.0.0 area 0` (backbone) <br />
 `network 10.1.12.1 0.0.0.0 area 23` <br />
 `network 10.1.13.1 0.0.0.0 area 23` <br />
 `network 10.1.14.1 0.0.0.0 area 4` <br />
-`router-id 1.1.1.1`	<br />
+`router-id 1.1.1.1` <br />
 `passive-interface gigabitEthernet0/2` <br />
 `exit` <br />
 `exit`<br />
