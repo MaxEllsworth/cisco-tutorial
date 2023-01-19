@@ -176,6 +176,7 @@
 `copy running-config startup-config` <br />
 `reload` <br />
 ## Checking Our Work
+`show ip ospf neighbor` <br />
 # BGP Example
 ## ISP Router 2
 `enable` <br />
