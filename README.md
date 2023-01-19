@@ -171,7 +171,7 @@
 `exit`<br />
 `copy running-config startup-config` <br />
 `reload` <br />
-## Checking Our Work
+## cHECking Our Work
 # BGP Example
 ## ISP Router 2
 `enable` <br />
@@ -180,16 +180,20 @@
 `ip address 140.1.1.1 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
-`interface gigabitEthernet 0/2` <br />
+<!--`interface gigabitEthernet 0/2` <br />
 `ip address 160.1.1.1 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
 `router bgp 100` <br />
 `network 140.1.1.0 mask 255.255.255.0` <br />
 `network 160.1.1.0 mask 255.255.255.0` <br />
+`exit` <br /> -->
+`router bgp 100` <br />
+`neighbor 140.1.1.2 remote-as 99` <br />
 `exit` <br />
 `exit` <br />
 `copy running-config startup-config` <br />
+
 
 ## Website 1 Router
 `enable`<br />
@@ -202,9 +206,12 @@
 `ip address 140.1.10.2 255.255.255.0` <br />
 `no shut` <br />
 `exit` <br />
+`router bgp 99` <br />
+`neighbor 140.1.1.1 remote-as 100` <br />
+`exit` <br />
 `exit` <br />
 `copy running-config startup-config` <br />
-
+<!--
 ## Website 2 Router
 `enable` <br />
 `conf t` <br />
@@ -213,4 +220,7 @@
 `ip address 160.1.10.2 255.255.255.0` <br />
 `exit` <br />
 `exit` <br />
-`copy running-config startup-config` <br />
+`copy running-config startup-config` <br /> -->
+## Checking Our Work
+- On both routers, in exec mode, run:
+`show ip bgp neighbors` <br />
